@@ -3,4 +3,7 @@
     <string name="tab_neighbour_title">My neighbours</string>
     <string name="tab_favorites_title">Favorites</string>
     <string name="activity_new_neighbour">New neighbour</string>
+    <string name="no_data">%1$s n\'a pas renseigné ces informations</string>
+    <string name="facebook_url">www.facebook.fr/%1$s</string>
+    <string name="design_description">"Bonjour ! Je souhaiterais faire de la marche nordique. Pas initiée, je recherche une ou plusieurs personnes susceptibles de m\'accompagner !J'aime les jeux de cartes tels la belote et le tarot…"</string>
 </resources>

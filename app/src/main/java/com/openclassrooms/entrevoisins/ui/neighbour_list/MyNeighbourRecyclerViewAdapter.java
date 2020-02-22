@@ -1,5 +1,7 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
 import com.openclassrooms.entrevoisins.model.Neighbour;
+import com.openclassrooms.entrevoisins.ui.neighbour_profile.ProfileNeighbourActivity;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -50,6 +53,20 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             public void onClick(View v) {
                 EventBus.getDefault().post(new DeleteNeighbourEvent(neighbour));
             }
+        });
+
+        /**
+         * Lancement de l'activité suite à un clic sur le voisin de la liste
+         */
+        holder.itemView.setOnClickListener(v -> {
+            final Context myContext = holder.itemView.getContext();
+            Intent myIntent = new Intent(myContext, ProfileNeighbourActivity.class);
+            // On passe le neighbour sur lequel on a cliqué à l'activité Profil
+            /**
+             *  TODO => Sortir l'utilisation du model de la vue RecyclerView
+             */
+            myIntent.putExtra("current_id", mNeighbours.get(position).getId());
+            myContext.startActivity(myIntent);
         });
     }
 
