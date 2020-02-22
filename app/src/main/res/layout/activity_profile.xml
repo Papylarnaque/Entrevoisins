@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!--Picture of the neighbour-->
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/neighbour_picture"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/neighbour_picture_height"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars[2]" />
+
+    <!--Back arrow navigation feature-->
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/backarrow"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
+
+    <!--
+    TODO - Changer le look du bouton en fonction du statut favoris ou non
+    -->
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/Neighbour_name_onpicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/text_margin"
+        android:layout_marginBottom="@dimen/text_margin"
+        android:textColor="@android:color/background_light"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="@+id/neighbour_picture"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Caroline" />
+
+    <!--
+    Description details of the neighbour
+    -->
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/neighbour_picture_height"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/neighbour_cardview1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/text_margin"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="@dimen/text_margin"
+                android:minHeight="100dp"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/text_margin"
+                    android:layout_marginTop="@dimen/text_margin"
+                    android:layout_marginBottom="@dimen/text_margin">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/Neighbour_name_description"
+                        android:layout_width="266dp"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        tools:text="Caroline" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/Neighbour_name_description"
+                        android:background="#2C000000" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/localization_picture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Neighbour_name_description"
+                        android:layout_marginTop="10dp"
+                        app:srcCompat="@drawable/ic_room_pink_24dp" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/Neighbour_place"
+                        android:layout_width="266dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/Neighbour_name_description"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_toEndOf="@+id/localization_picture"
+                        android:layout_toRightOf="@id/localization_picture"
+                        android:baselineAligned="false"
+                        tools:text="Saint Pierre du Mont à 5km" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/phone_picture"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/Neighbour_place"
+                        android:layout_marginTop="11dp"
+                        app:srcCompat="@drawable/ic_phone_pink_24dp" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/Neighbour_phone_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/Neighbour_place"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_toEndOf="@+id/phone_picture"
+                        tools:text="+33 6 86 57 90 14" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/website_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/Neighbour_phone_number"
+                        android:layout_marginTop="11dp"
+                        app:srcCompat="@drawable/ic_socialnetwork_pink_24dp" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/Neighbour_Url_Website"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/Neighbour_phone_number"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_toEndOf="@+id/phone_picture"
+                        android:layout_toRightOf="@id/phone_picture"
+                        android:baselineAligned="true"
+                        tools:text="www.facebook.fr/caroline" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/neighbour_description_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/neighbour_cardview1"
+                android:layout_marginStart="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:layout_marginEnd="@dimen/text_margin"
+                android:minHeight="100dp"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/text_margin">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/a_propos_de_moi"
+                        android:layout_width="266dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/text_margin"
+                        android:layout_marginTop="@dimen/text_margin"
+                        android:baselineAligned="false"
+                        android:text="A propos de moi"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/a_propos_de_moi"
+                        android:background="#2C000000" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/Neighbour_Description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/a_propos_de_moi"
+                        android:layout_marginStart="@dimen/text_margin"
+                        android:layout_marginTop="@dimen/text_margin"
+                        android:baselineAligned="false"
+                        android:text="@string/design_description" />
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.v7.widget.AppCompatImageButton
+        android:id="@+id/button"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="270dp"
+        android:layout_marginEnd="35dp"
+        android:background="@drawable/button_favorite_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_star_border_yellorange" />
+
+</android.support.constraint.ConstraintLayout>
