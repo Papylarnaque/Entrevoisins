@@ -2,7 +2,6 @@
 package com.openclassrooms.entrevoisins.neighbour_list;
 
 import android.support.test.espresso.contrib.RecyclerViewActions;
-import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -16,9 +15,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
 import static android.support.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static com.openclassrooms.entrevoisins.utils.RecyclerViewItemCountAssertion.withItemCount;
 import static org.hamcrest.core.IsNull.notNullValue;
 
@@ -51,7 +53,7 @@ public class NeighboursListTest {
     @Test
     public void myNeighboursList_shouldNotBeEmpty() {
         // First scroll to the position that needs to be matched and click on it.
-        onView(ViewMatchers.withId(R.id.list_neighbours))
+        onView(withId(R.id.list_neighbours))
                 .check(matches(hasMinimumChildCount(1)));
     }
 
@@ -61,11 +63,45 @@ public class NeighboursListTest {
     @Test
     public void myNeighboursList_deleteAction_shouldRemoveItem() {
         // Given : We remove the element at position 2
-        onView(ViewMatchers.withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT));
+        onView(withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT));
         // When perform a click on a delete icon
-        onView(ViewMatchers.withId(R.id.list_neighbours))
+        onView(withId(R.id.list_neighbours))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(1, new DeleteViewAction()));
         // Then : the number of element is 11
-        onView(ViewMatchers.withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT-1));
+        onView(withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT-1));
     }
+
+    /**
+     * When we click on a neighbour in the list, the neighbour profile is opened
+     */
+    @Test
+    public void myNeighboursList_clickOnNeighbourAction_shouldOpenNeighbourProfile() {
+        // Click on the second item in the neighbour list:
+        onView(withId(R.id.list_neighbours))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
+        // Neighbour profile screen should be opened:
+        onView(withId(R.id.neighbour_profile)).check(matches(isDisplayed()));
+    }
+
+
+    /**
+     * When we add a neighbour to the favorites, the neighbour appears in the favorites list
+     */
+    @Test
+    public void myNeighboursList_addNeighbourToFavoritesAction_shouldAddTheNeighbourToFavorites() {
+        // Click on the second item in the neighbour list:
+        onView(withId(R.id.list_neighbours))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
+        // Add the neighbour to favorites
+        onView((withId(R.id.add_to_favorites_button)))
+                .perform(click());
+        // Go back on neighbour list view and to favorites list view
+        onView(withId(R.id.backarrow))
+                .perform(click());
+        // Neighbour should appear in the list of favorites neighbours
+        onView(withId(R.id.favorite_list_neighbours))
+                .check(withItemCount(1));
+    }
+
+
 }

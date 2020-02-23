@@ -62,9 +62,6 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             final Context myContext = holder.itemView.getContext();
             Intent myIntent = new Intent(myContext, ProfileNeighbourActivity.class);
             // On passe le neighbour sur lequel on a cliqué à l'activité Profil
-            /**
-             *  TODO => Sortir l'utilisation du model de la vue RecyclerView
-             */
             myIntent.putExtra("current_id", mNeighbours.get(position).getId());
             myContext.startActivity(myIntent);
         });

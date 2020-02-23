@@ -1,7 +1,6 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_profile;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
@@ -52,7 +51,7 @@ public class ProfileNeighbourActivity extends AppCompatActivity {
         mNeighbourUrlWebsite = findViewById(R.id.Neighbour_Url_Website);
         mNeighbourDescription = findViewById(R.id.Neighbour_Description);
         mBackArrow = findViewById(R.id.backarrow);
-        favoriteButton = findViewById(R.id.button);
+        favoriteButton = findViewById(R.id.add_to_favorites_button);
 
         // Get the extended constructor information on the Neighbour we just clicked on from the Neighbour list
         NeighbourApiService mApiService = DI.getNeighbourApiService();
@@ -124,7 +123,6 @@ public class ProfileNeighbourActivity extends AppCompatActivity {
     }
 
     /**
-     * TODO
      * Add / Remove current neighbour into/from favorites
      */
     private void favoriteButtonClick() {
