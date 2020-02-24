@@ -1,4 +1,3 @@
-
 package com.openclassrooms.entrevoisins.neighbour_list;
 
 import android.support.test.espresso.contrib.RecyclerViewActions;
@@ -15,7 +14,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.clearText;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
 import static android.support.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
@@ -25,7 +27,6 @@ import static com.openclassrooms.entrevoisins.utils.RecyclerViewItemCountAsserti
 import static org.hamcrest.core.IsNull.notNullValue;
 
 
-
 /**
  * Test class for list of neighbours
  */
@@ -33,13 +34,11 @@ import static org.hamcrest.core.IsNull.notNullValue;
 public class NeighboursListTest {
 
     // This is fixed
-    private static int ITEMS_COUNT = 12;
-
-    private ListNeighbourActivity mActivity;
-
+    private static final int ITEMS_COUNT = 12;
     @Rule
     public ActivityTestRule<ListNeighbourActivity> mActivityRule =
             new ActivityTestRule(ListNeighbourActivity.class);
+    private ListNeighbourActivity mActivity;
 
     @Before
     public void setUp() {
@@ -58,17 +57,39 @@ public class NeighboursListTest {
     }
 
     /**
+     * When we add a neighbour, there is one neighbour added to the neighbours list
+     */
+    @Test
+    public void myNeighboursList_addNeighbourAction_shouldAddTheNeighbourToNeighboursList() {
+        // Given : We check that the count of items is equal to ITEMS_COUNT
+        onView(withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT));
+        // Click on the popup button for adding a neighbour
+        onView(withId(R.id.add_neighbour))
+                .perform(click());
+        // Click on the creation button for a new neighbour
+        onView(withId(R.id.name))
+                .perform(click());
+        onView(withId(R.id.name))
+                .perform(clearText(), typeText("New_Neighbour"), closeSoftKeyboard());
+        // Click on the creation button for a new neighbour
+        onView(withId(R.id.create))
+                .perform(click());
+        // Result : We check that the count of items is equal to ITEMS_COUNT+1
+        onView(withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT + 1));
+    }
+
+    /**
      * When we delete an item, the item is no more shown
      */
     @Test
     public void myNeighboursList_deleteAction_shouldRemoveItem() {
-        // Given : We remove the element at position 2
-        onView(withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT));
-        // When perform a click on a delete icon
+        // Given : We have ITEMS_COUNT+1 neighbours in the list (because of the myNeighboursList_addNeighbourAction_shouldAddTheNeighbourToNeighboursList test)
+        onView(withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT + 1));
+        // When perform a click on a delete icon on the second neighbour in the list
         onView(withId(R.id.list_neighbours))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(1, new DeleteViewAction()));
-        // Then : the number of element is 11
-        onView(withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT-1));
+        // Then : the number of element is ITEMS_COUNT
+        onView(withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT));
     }
 
     /**
@@ -101,6 +122,18 @@ public class NeighboursListTest {
         // Neighbour should appear in the list of favorites neighbours
         onView(withId(R.id.favorite_list_neighbours))
                 .check(withItemCount(1));
+    }
+
+    /**
+     * When we click on the popup button "Add a neighbour", the layout for adding a neighbour opens
+     */
+    @Test
+    public void myNeighboursList_openTheAddANeighbourMenuAction_shouldOpenTheViewForAddingANeighbour() {
+        // Click on the popup button for adding a neighbour
+        onView(withId(R.id.add_neighbour))
+                .perform(click());
+        // Add the neighbour to favorites
+        onView(withId(R.id.add_a_neighbour)).check(matches(isDisplayed()));
     }
 
 

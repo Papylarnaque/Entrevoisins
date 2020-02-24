@@ -42,7 +42,19 @@ public class NeighbourServiceTest {
         assertFalse(service.getNeighbours().contains(neighbourToDelete));
     }
 
-    /** Adds a neighbour to favorites and checks it is in favorites list */
+    /**
+     * Adds a neighbour and checks it is present in the neighbours list
+     */
+    @Test
+    public void createNeighbourWithSuccess() {
+        Neighbour neighbourToCreate = new Neighbour((long) service.getNeighbours().size(), "New_test_neighbour", "https://i.pravatar.cc/150", "", "", "");
+        service.createNeighbour(neighbourToCreate);
+        assertTrue(service.getNeighbours().contains(neighbourToCreate));
+    }
+
+    /**
+     * Adds a neighbour to favorites and checks it is in favorites list
+     */
     @Test
     public void addNeighbourToFavoritesWithSuccess() {
         Neighbour neighbourToAddToFavorites = service.getNeighbours().get(0);
@@ -50,7 +62,9 @@ public class NeighbourServiceTest {
         assertTrue(service.getFavoriteNeighbours().contains(neighbourToAddToFavorites));
     }
 
-    /** Adds then removes a neighbour to favorites and checks it is not in favorites list */
+    /**
+     * Adds then removes a neighbour to favorites and checks it is not in favorites list
+     */
     @Test
     public void removeNeighbourFromFavoritesWithSuccess() {
         Neighbour neighbourToRemoveFromFavorites = service.getNeighbours().get(0);
@@ -61,8 +75,10 @@ public class NeighbourServiceTest {
     }
 
 
-    /** Adds a neighbour to favorites and removes it from neighbours list
-     *  then checks that the neighbour is not part of favorites or neighbours list  */
+    /**
+     * Adds a neighbour to favorites and removes it from neighbours list
+     * then checks that the neighbour is not part of favorites or neighbours list
+     */
     @Test
     public void deleteNeighbourAddedToFavoritesWithSuccess() {
         Neighbour neighbourToAddToFavoritesAndToDelete = service.getNeighbours().get(0);
@@ -73,7 +89,6 @@ public class NeighbourServiceTest {
         assertFalse(service.getNeighbours().contains(neighbourToAddToFavoritesAndToDelete));
         assertFalse(service.getFavoriteNeighbours().contains(neighbourToAddToFavoritesAndToDelete));
     }
-
 
 
 }

@@ -1,7 +1,6 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
@@ -20,14 +19,14 @@ import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class NeighbourFavoriteFragment extends Fragment {
 
     private NeighbourApiService mApiService;
-    List<Neighbour> mFavoriteNeighbours;
+    private List<Neighbour> mFavoriteNeighbours;
     private RecyclerView mRecyclerView;
 
     /**
@@ -36,8 +35,7 @@ public class NeighbourFavoriteFragment extends Fragment {
      * @return @{@link NeighbourFavoriteFragment}
      */
     public static NeighbourFavoriteFragment newInstance() {
-        NeighbourFavoriteFragment fragment = new NeighbourFavoriteFragment();
-        return fragment;
+        return new NeighbourFavoriteFragment();
     }
 
     @Override
@@ -53,7 +51,7 @@ public class NeighbourFavoriteFragment extends Fragment {
         Context context = view.getContext();
         mRecyclerView = (RecyclerView) view;
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(Objects.requireNonNull(getContext()), DividerItemDecoration.VERTICAL));
 
 
         initFavoriteList();
@@ -68,13 +66,14 @@ public class NeighbourFavoriteFragment extends Fragment {
 
         mFavoriteNeighbours = mApiService.getFavoriteNeighbours();
         if (mFavoriteNeighbours != null) {
-            mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mFavoriteNeighbours));}
+            mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mFavoriteNeighbours));
+        }
 
     }
 
     // onResume set for refreshing the view
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         initFavoriteList();
     }

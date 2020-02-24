@@ -12,28 +12,20 @@ import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
+import java.util.Objects;
+
 
 public class ProfileNeighbourActivity extends AppCompatActivity {
 
     private Neighbour currentNeighbour;
 
-    /**
-     * User interface variables
-     */
-    private ImageView mNeighbourPicture;
-    private TextView mNeighbourName;
-    private TextView mNeighbourName_description;
-    private TextView mNeighbourPlace;
-    private TextView mNeighbourUrlWebsite;
-    private TextView mNeighbourPhoneNumber;
-    private TextView mNeighbourDescription;
     private ImageView favoriteButton;
     private ImageView mBackArrow;
 
     /**
      * Method to check emptiness of getters in Neighbour
      */
-    public static boolean check_string(String str) {
+    private static boolean check_string(String str) {
         return (str == null || str.isEmpty());
     }
 
@@ -43,21 +35,23 @@ public class ProfileNeighbourActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         // Instantiate the variables
-        mNeighbourPicture = findViewById(R.id.neighbour_picture);
-        mNeighbourName = findViewById(R.id.Neighbour_name_onpicture);
-        mNeighbourName_description = findViewById(R.id.Neighbour_name_description);
-        mNeighbourPlace = findViewById(R.id.Neighbour_place);
-        mNeighbourPhoneNumber = findViewById(R.id.Neighbour_phone_number);
-        mNeighbourUrlWebsite = findViewById(R.id.Neighbour_Url_Website);
-        mNeighbourDescription = findViewById(R.id.Neighbour_Description);
+        /**
+         * User interface variables
+         */
+        ImageView mNeighbourPicture = findViewById(R.id.neighbour_picture);
+        TextView mNeighbourName = findViewById(R.id.Neighbour_name_onpicture);
+        TextView mNeighbourName_description = findViewById(R.id.Neighbour_name_description);
+        TextView mNeighbourPlace = findViewById(R.id.Neighbour_place);
+        TextView mNeighbourPhoneNumber = findViewById(R.id.Neighbour_phone_number);
+        TextView mNeighbourUrlWebsite = findViewById(R.id.Neighbour_Url_Website);
+        TextView mNeighbourDescription = findViewById(R.id.Neighbour_Description);
         mBackArrow = findViewById(R.id.backarrow);
         favoriteButton = findViewById(R.id.add_to_favorites_button);
 
         // Get the extended constructor information on the Neighbour we just clicked on from the Neighbour list
         NeighbourApiService mApiService = DI.getNeighbourApiService();
-        Long neighbourId = getIntent().getExtras().getLong("current_id");
+        long neighbourId = Objects.requireNonNull(getIntent().getExtras()).getLong("current_id");
         currentNeighbour = mApiService.getNeighbour(neighbourId);
-
 
 
         // Context in order to call resources strings
@@ -108,9 +102,9 @@ public class ProfileNeighbourActivity extends AppCompatActivity {
     }
 
     private void displayFavorite() {
-        if ( currentNeighbour.isFavorite()){
+        if (currentNeighbour.isFavorite()) {
             favoriteButton.setImageResource(R.drawable.ic_star_yellorange);
-        }else{
+        } else {
             favoriteButton.setImageResource(R.drawable.ic_star_border_yellorange);
         }
     }
@@ -118,7 +112,7 @@ public class ProfileNeighbourActivity extends AppCompatActivity {
     /**
      * Calls back former page
      */
-    public void Back_to_former_page() {
+    private void Back_to_former_page() {
         mBackArrow.setOnClickListener(v -> onBackPressed());
     }
 
@@ -127,10 +121,9 @@ public class ProfileNeighbourActivity extends AppCompatActivity {
      */
     private void favoriteButtonClick() {
         favoriteButton.setOnClickListener(view -> {
-            if (currentNeighbour.isFavorite()){
+            if (currentNeighbour.isFavorite()) {
                 currentNeighbour.setFavorite(false);
-            }
-            else {
+            } else {
                 currentNeighbour.setFavorite(true);
             }
             displayFavorite();

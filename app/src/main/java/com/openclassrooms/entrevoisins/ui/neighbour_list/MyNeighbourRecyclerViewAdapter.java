@@ -55,8 +55,8 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             }
         });
 
-        /**
-         * Lancement de l'activité suite à un clic sur le voisin de la liste
+        /*
+          Lancement de l'activité suite à un clic sur le voisin de la liste
          */
         holder.itemView.setOnClickListener(v -> {
             final Context myContext = holder.itemView.getContext();
@@ -80,7 +80,7 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
         @BindView(R.id.item_list_delete_button)
         public ImageButton mDeleteButton;
 
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
         }

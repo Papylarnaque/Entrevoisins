@@ -106,6 +106,7 @@
                         android:layout_toEndOf="@+id/localization_picture"
                         android:layout_toRightOf="@id/localization_picture"
                         android:baselineAligned="false"
+                        tools:ignore="RtlHardcoded"
                         tools:text="Saint Pierre du Mont à 5km" />
 
                     <android.support.v7.widget.AppCompatImageView
@@ -142,7 +143,6 @@
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="14dp"
                         android:layout_toEndOf="@+id/phone_picture"
-                        android:layout_toRightOf="@id/phone_picture"
                         android:baselineAligned="true"
                         tools:text="www.facebook.fr/caroline" />
 

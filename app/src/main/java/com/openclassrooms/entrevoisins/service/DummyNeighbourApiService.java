@@ -8,9 +8,9 @@ import java.util.List;
 /**
  * Dummy mock for the Api
  */
-public class DummyNeighbourApiService implements  NeighbourApiService {
+public class DummyNeighbourApiService implements NeighbourApiService {
 
-    private List<Neighbour> neighbours = DummyNeighbourGenerator.generateNeighbours();
+    private final List<Neighbour> neighbours = DummyNeighbourGenerator.generateNeighbours();
 
 
     /**
@@ -31,6 +31,7 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
 
     /**
      * {@inheritDoc}
+     *
      * @param neighbour
      */
     @Override
@@ -41,8 +42,8 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
 
     @Override
     public void addFavoriteNeighbour(long neighbourId) {
-        for(Neighbour neighbour: neighbours) {
-            if(neighbour.getId()==neighbourId) {
+        for (Neighbour neighbour : neighbours) {
+            if (neighbour.getId() == neighbourId) {
                 neighbour.setFavorite(true);
             }
         }
@@ -50,8 +51,8 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
 
     @Override
     public void removeFavoriteNeighbour(long neighbourId) {
-        for(Neighbour neighbour: neighbours) {
-            if(neighbour.getId()==neighbourId) {
+        for (Neighbour neighbour : neighbours) {
+            if (neighbour.getId() == neighbourId) {
                 neighbour.setFavorite(false);
             }
         }
@@ -59,8 +60,8 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
 
     @Override
     public Neighbour getNeighbour(long neighbourId) {
-        for(Neighbour neighbour: neighbours) {
-            if(neighbour.getId()==neighbourId) {
+        for (Neighbour neighbour : neighbours) {
+            if (neighbour.getId() == neighbourId) {
                 return neighbour;
             }
         }
@@ -70,15 +71,13 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
     @Override
     public List<Neighbour> getFavoriteNeighbours() {
         List<Neighbour> result = new ArrayList<>();
-        for(Neighbour neighbour: neighbours) {
-            if(neighbour.isFavorite()) {
+        for (Neighbour neighbour : neighbours) {
+            if (neighbour.isFavorite()) {
                 result.add(neighbour);
             }
         }
         return result;
     }
-
-
 
 
 }
