@@ -14,11 +14,11 @@ That version originally contained the following functionalities :
 The [Framework paper](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/GEN+android+P3/De%CC%81veloppez+une+nouvelle+fonctionnalite%CC%81+pour+l%E2%80%99application+Entrevoisins-+Note+de+cadrage+(1).pdf "Framework paper") for this version of the app requires the following implementations :
 
 >On the click on a neighbour on the list of neighbours, implement :
-* a button to go to the former page ;
-* the neighbour avatar ;
-* the neighbour name ;
-* a button that allows to add the neighbour to favorites ;
-* a Favorite tab where are listed the neighbours marked as favorites.
+>* a button to go to the former page ;
+>* the neighbour avatar ;
+>* the neighbour name ;
+>* a button that allows to add the neighbour to favorites ;
+>* a Favorite tab where are listed the neighbours marked as favorites.
 
 ## Setup
 - You have to use Android Studio, download it and intall it if you don't have it yet.
@@ -26,10 +26,8 @@ The [Framework paper](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/pr
 - Open Android Studio then open Entrevoisins project
 - To compile the entire project, click the "Build project" button
 
-  
-
 ## Tests
-4 Unit tests :
+6 Unit tests :
 - get the list of niehgbours with success
 - delete neighbour with success
 - create a neighbour with success
@@ -37,7 +35,7 @@ The [Framework paper](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/pr
 - remove a neighbour from favorites list with success
 - delete a neighbour, that is added to favorites, with success
 
-4 Instrumented tests :
+5 Instrumented tests :
 - recycler view not empty
 - delete a niehgbour delete his item aswell
 - open the neighbour profile with success
