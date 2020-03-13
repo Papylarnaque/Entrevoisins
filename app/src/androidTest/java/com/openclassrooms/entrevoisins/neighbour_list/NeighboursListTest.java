@@ -104,6 +104,19 @@ public class NeighboursListTest {
         onView(withId(R.id.neighbour_profile)).check(matches(isDisplayed()));
     }
 
+    /**
+     * When we click on a neighbour in the list, the neighbour profile is opened and the Neighbour name should be casted to the Profile view
+     */
+    @Test
+    public void myNeighboursList_clickOnNeighbourAction_shouldCastNeighbourNameToProfileView() {
+        // Click on the second item in the neighbour list:
+        onView(withId(R.id.list_neighbours))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
+        // Neighbour name is casted to the Detailed View's TextView
+        onView(withId(R.id.Neighbour_name_onpicture)).check(matches(notNullValue()));
+    }
+
+
 
     /**
      * When we add a neighbour to the favorites, the neighbour appears in the favorites list
