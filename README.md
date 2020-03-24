@@ -35,10 +35,11 @@ The [Framework paper](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/pr
 - remove a neighbour from favorites list with success
 - delete a neighbour, that is added to favorites, with success
 
-5 Instrumented tests :
+6 Instrumented tests :
 - recycler view not empty
 - delete a niehgbour delete his item aswell
 - open the neighbour profile with success
+- when you click on a neighbour, its profile should open and the name of the neighbour should be the right one
 - when you add a neighbour to favorite, it should be diplayed in the favorites fragment
 - when you click on the button to add a neighbour, it should display the add a neighbour view
 
