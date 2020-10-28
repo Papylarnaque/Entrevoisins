@@ -19,6 +19,8 @@ import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
+import java.util.Objects;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -56,7 +58,7 @@ public class AddNeighbourActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_neighbour);
         ButterKnife.bind(this);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         mApiService = DI.getNeighbourApiService();
         init();
     }
@@ -74,7 +76,7 @@ public class AddNeighbourActivity extends AppCompatActivity {
         mNeighbourImage = randomImage();
         Glide.with(this).load(mNeighbourImage).placeholder(R.drawable.ic_account)
                 .apply(RequestOptions.circleCropTransform()).into(avatar);
-        nameInput.getEditText().addTextChangedListener(new TextWatcher() {
+        Objects.requireNonNull(nameInput.getEditText()).addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -95,7 +97,7 @@ public class AddNeighbourActivity extends AppCompatActivity {
     void addNeighbour() {
         Neighbour neighbour = new Neighbour(
                 System.currentTimeMillis(),
-                nameInput.getEditText().getText().toString(),
+                Objects.requireNonNull(nameInput.getEditText()).getText().toString(),
                 mNeighbourImage,
                 addressInput.getEditText().getText().toString(),
                 phoneInput.getEditText().getText().toString(),
@@ -111,6 +113,7 @@ public class AddNeighbourActivity extends AppCompatActivity {
      * @return String
      */
     private String randomImage() {
-        return "https://i.pravatar.cc/150?u=" + System.currentTimeMillis();
+        return "https://picsum.photos/300" ;
+
     }
 }

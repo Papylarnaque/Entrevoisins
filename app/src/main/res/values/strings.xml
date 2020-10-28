@@ -3,9 +3,17 @@
     <string name="tab_neighbour_title">My neighbours</string>
     <string name="tab_favorites_title">Favorites</string>
     <string name="activity_new_neighbour">New neighbour</string>
-    <string name="new_neighbour_avatar">new_neighbour_avatar</string>
-    <string name="about_me">A propos de moi</string>
-    <string name="no_data">%1$s n\'a pas renseigné ces informations</string>
+
+    <string name="name">Name</string>
+    <string name="phone_number">Phone number</string>
+    <string name="address">Address</string>
+    <string name="about_me">About me</string>
+    <string name="no_data">%1$s did not provide this information</string>
+
+
     <string name="facebook_url">www.facebook.fr/%1$s</string>
-    <string name="design_description">"Bonjour ! Je souhaiterais faire de la marche nordique. Pas initiée, je recherche une ou plusieurs personnes susceptibles de m\'accompagner !J'aime les jeux de cartes tels la belote et le tarot…"</string>
+    <string name="new_neighbour_avatar" translatable="false">new_neighbour_avatar</string>
+    <string name="design_description" translatable="false">"Bonjour ! Je souhaiterais faire de la marche nordique. Pas initiée, je recherche une ou plusieurs personnes susceptibles de m\'accompagner !J'aime les jeux de cartes tels la belote et le tarot…"</string>
+
+
 </resources>

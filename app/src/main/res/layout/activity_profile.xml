@@ -173,7 +173,7 @@
                         android:layout_marginStart="@dimen/text_margin"
                         android:layout_marginTop="@dimen/text_margin"
                         android:baselineAligned="false"
-                        android:text="A propos de moi"
+                        android:text="@string/about_me"
                         android:textColor="#000000"
                         android:textSize="15sp" />
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Entrevoisins</string>
+    <string name="tab_neighbour_title">Mes voisins</string>
+    <string name="tab_favorites_title">Favoris</string>
+    <string name="activity_new_neighbour">Nouveau voisin</string>
+    <string name="name">Nom</string>
+    <string name="about_me">A propos de moi</string>
+    <string name="no_data">%1$s n\'a pas renseigné ces informations</string>
+    <string name="facebook_url">www.facebook.fr/%1$s</string>
+    <string name="phone_number">Telephone</string>
+    <string name="address">Adresse</string>
+
+</resources>
