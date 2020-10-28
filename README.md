@@ -43,6 +43,10 @@ The [Framework paper](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/pr
 - when you add a neighbour to favorite, it should be diplayed in the favorites fragment
 - when you click on the button to add a neighbour, it should display the add a neighbour view
 
+## Screenshots of the application
+<img src="/pics/Screenshot_1.png" width="250"> <img src="/pics/Screenshot_4.png" width="250"> <img src="/pics/Screenshot_2.png" width="250">
+<img src="/pics/Screenshot_3.png" width="250">
+
 ## Status
 Project is:  _finished_
 
